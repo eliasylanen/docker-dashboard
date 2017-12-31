@@ -1,0 +1,9 @@
+{
+  "name": "typescript-tutorials",
+  "version": "1.0.0",
+  "description": "Create a Docker dashboard with TypeScript, React and Socket.io",
+  "main": "index.js",
+  "repository": "git@github.com:pepetopo/typescript-tutorials.git",
+  "author": "Elias Ylänen <elias.ylanen@gmail.com>",
+  "license": "MIT"
+}
