@@ -1,9 +1,32 @@
 {
   "name": "typescript-tutorials",
   "version": "1.0.0",
-  "description": "Create a Docker dashboard with TypeScript, React and Socket.io",
-  "main": "index.js",
+  "description":
+    "Create a Docker dashboard with TypeScript, React and Socket.io",
+  "main": "dist/main.js",
   "repository": "git@github.com:pepetopo/typescript-tutorials.git",
   "author": "Elias Ylänen <elias.ylanen@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev":
+      "concurrently -k -p '[{name}]' -n 'TypeScript,Node' -c 'yellow.bold,cyan.bold,green.bold' 'npm run watch-build' 'npm run watch-server'",
+    "watch-build": "parcel src/",
+    "watch-server": "nodemon --delay 2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.1",
+    "@types/node": "^9.4.6",
+    "@types/react": "^16.0.38",
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.14.12",
+    "parcel-bundler": "^1.6.0",
+    "typescript": "^2.7.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
 }
