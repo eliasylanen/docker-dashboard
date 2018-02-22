@@ -14,7 +14,8 @@
     "watch-client": "parcel client/index.tsx",
     "dev":
       "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "build": "yarn copy-index && tsc && parcel build client/index.tsx"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.38",

@@ -31,9 +31,9 @@ const socketConnetion = async (io: SocketIO.Server) => {
         }
       }
     );
-    socket.on('image.run', async args => {
+    socket.on('image.run', async ({ name }) => {
       try {
-        const container = await docker.createContainer({ Image: args.name });
+        const container = await docker.createContainer({ Image: name });
         await container.start();
       } catch (err) {
         socket.emit('image.error', { message: err });
@@ -43,7 +43,7 @@ const socketConnetion = async (io: SocketIO.Server) => {
 };
 
 const startServer = async (port: number) => {
-  const app: express.Application = express();
+  const app = express();
 
   app
     .use(express.static('dist'))
@@ -53,8 +53,8 @@ const startServer = async (port: number) => {
         await res.sendFile(path.resolve(__dirname, '..', 'index.html'))
     );
 
-  const server: http.Server = new http.Server(app);
-  const io: SocketIO.Server = socketIo(server);
+  const server = new http.Server(app);
+  const io = socketIo(server);
 
   try {
     await socketConnetion(io);

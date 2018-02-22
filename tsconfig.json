@@ -12,9 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noEmitOnError": true,
-    "lib": ["es6", "dom", "esnext"],
-    "paths": {
-      "*": ["node_modules/*"]
-    }
-  }
+    "lib": ["es6", "dom", "esnext"]
+  },
+  "include": ["server/**/*"]
 }
