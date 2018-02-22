@@ -3,10 +3,10 @@ import * as React from 'react';
 import { ModalProperties } from '../types';
 
 export default class extends React.Component<ModalProperties> {
-  onPrimaryButtonClick() {
+  onPrimaryButtonClick = () => {
     const { onButtonClicked } = this.props;
     !!onButtonClicked && onButtonClicked();
-  }
+  };
 
   render() {
     const { id, title, children, buttonText, isValid } = this.props;
@@ -16,6 +16,7 @@ export default class extends React.Component<ModalProperties> {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
+              <h4 className="modal-title">{title}</h4>
               <button
                 type="button"
                 className="close"
@@ -24,7 +25,6 @@ export default class extends React.Component<ModalProperties> {
               >
                 &times;
               </button>
-              <h4 className="modal-title">{title}</h4>
             </div>
             <div className="modal-body">{children}</div>
             <div className="modal-footer">
@@ -32,6 +32,7 @@ export default class extends React.Component<ModalProperties> {
                 type="button"
                 onClick={this.onPrimaryButtonClick}
                 className={`btn ${isValid ? 'btn-primary' : 'btn-disabled'}`}
+                data-dismiss="modal"
               >
                 {buttonText || 'Ok'}
               </button>

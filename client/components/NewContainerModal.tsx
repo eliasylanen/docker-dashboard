@@ -19,7 +19,6 @@ export default class NewContainerModal extends React.Component<
   };
 
   runImage = () => {
-    console.log(this.props, this.state);
     const { props: { onRunImage }, state: { isValid, imageName } } = this;
     if (isValid && onRunImage) {
       onRunImage(imageName);
@@ -52,19 +51,19 @@ export default class NewContainerModal extends React.Component<
         onButtonClicked={this.runImage}
         isValid={isValid}
       >
-        <form className="form-horizontal" method="dialog">
+        <form className="form-horizontal">
           <div className={inputClass}>
-            <label htmlFor="imageName" className="col-sm-3 control-label">
-              Image name
-            </label>
             <div className="col-sm-9">
-              <input
-                type="text"
-                className="form-control"
-                onChange={this.onImageNameChange}
-                id="imageName"
-                placeholder="e.g mongodb:latest"
-              />
+              <label className="control-label">
+                Image name
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={this.onImageNameChange}
+                  id="imageName"
+                  placeholder="e.g mongodb:latest"
+                />
+              </label>
             </div>
           </div>
         </form>
