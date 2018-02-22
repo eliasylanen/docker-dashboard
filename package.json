@@ -1,7 +1,8 @@
 {
   "name": "typescript-tutorials",
   "version": "1.0.0",
-  "description": "Create a Docker dashboard with TypeScript, React and Socket.io",
+  "description":
+    "Create a Docker dashboard with TypeScript, React and Socket.io",
   "repository": "git@github.com:pepetopo/typescript-tutorials.git",
   "author": "Elias Ylänen <elias.ylanen@gmail.com>",
   "license": "MIT",
@@ -10,28 +11,37 @@
     "copy-index": "cpx ./index.html ./dist/ -C",
     "watch-build": "yarn copy-index && tsc -w",
     "watch-server": "nodemon",
-    "watch-webpack": "webpack -w --hot",
-    "dev": "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-webpack'"
+    "watch-client": "parcel client/index.tsx",
+    "dev":
+      "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
+    "@types/bootstrap": "^3.3.38",
     "@types/classnames": "^2.2.3",
+    "@types/dockerode": "^2.5.4",
     "@types/express": "^4.11.1",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
+    "@types/socket.io": "^1.4.31",
+    "@types/socket.io-client": "^1.4.32",
     "awesome-typescript-loader": "^3.4.1",
     "concurrently": "^3.5.1",
     "cpx": "^1.5.0",
     "nodemon": "^1.14.12",
-    "typescript": "^2.7.2",
-    "webpack": "^3.11.0"
+    "parcel-bundler": "^1.6.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "bootstrap": "4",
     "classnames": "^2.2.5",
+    "dockerode": "^2.5.4",
     "express": "^4.16.2",
     "jquery": "^3.3.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "socket.io": "^2.0.4"
   }
 }
