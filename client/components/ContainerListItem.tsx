@@ -15,8 +15,14 @@ export default class extends React.Component<Container> {
   startContainer = () => {
     const { id } = this.props;
     const event = this.isRunning() ? 'stop' : 'start';
-    socket.emit('container.toggle', { id, event });
+    socket.emit('container.control', { id, event });
   };
+
+  removeContainer = () => {
+    const { id } = this.props;
+    socket.emit('container.control', { id, event: 'remove' });
+  };
+
   render() {
     const { state, name, status, image } = this.props;
 
@@ -36,6 +42,9 @@ export default class extends React.Component<Container> {
           <div className="panel-footer">
             <button className="btn btn-default" onClick={this.startContainer}>
               {buttonText}
+            </button>
+            <button className="btn btn-default" onClick={this.removeContainer}>
+              Remove container
             </button>
           </div>
         </div>
