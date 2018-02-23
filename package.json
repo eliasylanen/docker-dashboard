@@ -1,8 +1,7 @@
 {
   "name": "typescript-tutorials",
   "version": "1.0.0",
-  "description":
-    "Create a Docker dashboard with TypeScript, React and Socket.io",
+  "description": "Create a Docker dashboard with TypeScript, React and Socket.io",
   "repository": "git@github.com:pepetopo/typescript-tutorials.git",
   "author": "Elias Ylänen <elias.ylanen@gmail.com>",
   "license": "MIT",
@@ -12,8 +11,7 @@
     "watch-build": "yarn copy-index && tsc -w",
     "watch-server": "nodemon",
     "watch-client": "parcel client/index.tsx",
-    "dev":
-      "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
+    "dev": "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
     "lint": "tslint --project .",
     "build": "yarn copy-index && tsc && parcel build client/index.tsx"
   },
@@ -28,6 +26,8 @@
     "@types/socket.io": "^1.4.31",
     "@types/socket.io-client": "^1.4.32",
     "awesome-typescript-loader": "^3.4.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
     "cpx": "^1.5.0",
     "nodemon": "^1.14.12",
