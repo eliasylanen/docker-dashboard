@@ -10,11 +10,11 @@ const startServer = async (port: number) => {
   const app = express();
 
   app
-    .use(express.static('dist'))
+    .use(express.static('dist/client'))
     .get(
       '/',
       async (req: express.Request, res: express.Response) =>
-        await res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+        await res.sendFile(path.resolve(__dirname, 'index.html'))
     );
 
   const server = new http.Server(app);

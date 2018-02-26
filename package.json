@@ -8,14 +8,14 @@
   "license": "MIT",
   "main": "dist/server/",
   "scripts": {
-    "copy-index": "cpx ./index.html ./dist/ -C",
-    "watch-build": "yarn copy-index && tsc -w",
+    "watch-build": "tsc -w",
     "watch-server": "nodemon",
-    "watch-client": "parcel client/index.tsx",
+    "watch-client":
+      "parcel ./client/index.html --out-dir './dist/client/' --public-url '/'",
     "dev":
       "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
     "lint": "tslint --project .",
-    "build": "yarn copy-index && tsc && parcel build client/index.tsx"
+    "build": "tsc && parcel build client/index.tsx"
   },
   "devDependencies": {
     "@types/bootstrap": "^3.3.38",
@@ -30,7 +30,6 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
-    "cpx": "^1.5.0",
     "nodemon": "^1.14.12",
     "parcel-bundler": "^1.6.2",
     "tslint": "^5.9.1",

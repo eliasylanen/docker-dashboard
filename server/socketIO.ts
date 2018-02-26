@@ -18,7 +18,7 @@ const socketConnection = async (io: SocketIO.Server) => {
         }
       }
     );
-    socket.on('image.run', async ({ name }) => {
+    socket.on('image.run', async ({ name }: { name: string }) => {
       try {
         const container = await docker.createContainer({ Image: name });
         await container.start();

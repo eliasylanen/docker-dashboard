@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as io from 'socket.io-client';
+import * as Docker from 'dockerode';
 
 import ContainerListItem from './ContainerListItem';
 import ContainerItemList from './ContainerItemList';
@@ -15,7 +16,7 @@ interface AppState {
 
 const socket = io.connect();
 
-const mapContainer = (container: any): Container => ({
+const mapContainer = (container: Docker.ContainerInfo): Container => ({
   id: container.Id,
   name: container.Names.map((n: string) => n.substr(1)).join(', '),
   state: container.State,
@@ -24,7 +25,7 @@ const mapContainer = (container: any): Container => ({
 });
 
 export default class extends React.Component<{}, AppState> {
-  constructor(props: any) {
+  constructor(props = {}) {
     super(props);
 
     this.state = {
@@ -32,16 +33,19 @@ export default class extends React.Component<{}, AppState> {
       stoppedContainers: [],
     };
 
-    socket.on('containers.list', (containers: Array<Container>) => {
+    socket.on('containers.list', (containers: Array<Docker.ContainerInfo>) => {
       const mappedContainers = containers.map(mapContainer);
       this.setState(() => ({
-        containers: mappedContainers.filter(value => value.state === 'running'),
+        containers: mappedContainers.filter(
+          ({ state }: Container) => state === 'running'
+        ),
         stoppedContainers: mappedContainers.filter(
-          value => value.state !== 'running'
+          ({ state }: Container) => state !== 'running'
         ),
       }));
     });
     socket.on('image.error', (args: any) => {
+      console.log(args);
       alert(args.message.json.message);
     });
   }
