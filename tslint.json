@@ -13,7 +13,6 @@
     "prefer-const": true,
     "no-string-throw": true,
     "unified-signatures": true,
-    "typeof-compare": true,
     "no-non-null-assertion": true,
     "no-unnecessary-callback-wrapper": true,
     "no-invalid-template-strings": true,

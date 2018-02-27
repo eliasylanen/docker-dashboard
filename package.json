@@ -1,27 +1,26 @@
 {
   "name": "typescript-tutorials",
   "version": "1.0.0",
-  "description":
-    "Create a Docker dashboard with TypeScript, React and Socket.io",
+  "description": "Create a Docker dashboard with TypeScript, React and Socket.io",
   "repository": "git@github.com:pepetopo/docker-dashboard.git",
   "author": "Elias Ylänen <elias.ylanen@gmail.com>",
   "license": "MIT",
   "main": "dist/server/",
   "scripts": {
+    "build": "concurrently \"tsc\" \"parcel build ./client/index.html --out-dir './dist/client/' --public-url '/'\"",
+    "start": "nodemon",
     "watch-build": "tsc -w",
-    "watch-server": "nodemon",
-    "watch-client":
-      "parcel ./client/index.html --out-dir './dist/client/' --public-url '/'",
-    "dev":
-      "concurrently 'yarn watch-build' 'yarn watch-server' 'yarn watch-client'",
-    "lint": "tslint --project .",
-    "build": "tsc && parcel build client/index.tsx"
+    "watch-client": "parcel ./client/index.html --out-dir './dist/client/' --public-url '/'",
+    "dev": "concurrently 'yarn watch-build' 'yarn start' 'yarn watch-client'",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
+    "@types/auth0-js": "^8.11.2",
     "@types/bootstrap": "^3.3.38",
     "@types/classnames": "^2.2.3",
     "@types/dockerode": "^2.5.4",
     "@types/express": "^4.11.1",
+    "@types/history": "^4.6.2",
     "@types/node": "^9.4.6",
     "@types/react": "^16.0.38",
     "@types/react-dom": "^16.0.4",
@@ -36,10 +35,12 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
+    "auth0-js": "^9.3.0",
     "bootstrap": "4",
     "classnames": "^2.2.5",
     "dockerode": "^2.5.4",
     "express": "^4.16.2",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

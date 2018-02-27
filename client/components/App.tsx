@@ -45,7 +45,6 @@ export default class extends React.Component<{}, AppState> {
       }));
     });
     socket.on('image.error', (args: any) => {
-      console.log(args);
       alert(args.message.json.message);
     });
   }
